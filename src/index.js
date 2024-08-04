@@ -1,17 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './index.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const initialData = {
+  name: "Rijish Ahuja",
+  age: 22,
+  email: "rhythm00ahuja@gmail.com",
+  contact: "8860472997",
+  education: [
+    { institution: "University A", degree: "B.tech", year: 2023 },
+    { institution: "University B", degree: "M.tech", year: 2024 }
+  ],
+  courses: [
+    { name: "Course A", instructor: "Instructor A", duration: "3 months" },
+    { name: "Course B", instructor: "Instructor B", duration: "6 months" }
+  ]
+};
+
+if (!localStorage.getItem('studentData')) {
+  localStorage.setItem('studentData', JSON.stringify(initialData));
+}
+
+ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
